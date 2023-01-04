@@ -1,0 +1,30 @@
+{
+  "Ts Function Component": {
+    "prefix": "tsfc",
+    "body": [
+      "import React from 'react'",
+      "",
+      "",
+      "export default function ${1:${TM_DIRECTORY/^.+\\\\(.*)$/$1/}}() {",
+      "",
+      "  return (",
+      "    <div>${1:${TM_DIRECTORY/^.+\\\\(.*)$/$1/}}</div>",
+      "  )",
+      "}",
+      ""
+    ],
+    "description": ""
+  },
+  "Next Page": {
+    "prefix": "np",
+    "body": [
+      "import type { NextPage } from 'next'",
+      "import Page${1:${TM_DIRECTORY/^.+\\\\(.*)$/$1/}} from 'src/containers/Page${1:${TM_DIRECTORY/^.+\\\\(.*)$/$1/}}'",
+      "",
+      "const ${1:${TM_DIRECTORY/^.+\\\\(.*)$/$1/}}: NextPage = () => <Page${1:${TM_DIRECTORY/^.+\\\\(.*)$/$1/}}/>",
+      "",
+      "export default ${1:${TM_DIRECTORY/^.+\\\\(.*)$/$1/}}"
+    ],
+    "description": ""
+  }
+}
