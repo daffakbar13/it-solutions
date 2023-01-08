@@ -64,32 +64,32 @@ export default function HeaderContainer(props: React.PropsWithChildren) {
           </Navbar.Content>
         )}
         <MobileNav open={open}>
-          <Navbar.Content>
-            {menu.map((m, i) => (
-              <Accordion key={i}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls={`${i}-content`}
-                  id={`${i}header`}
-                >
-                  <Typography>{m.title}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Box display="flex" flexDirection="column" gap={1}>
-                    {m.subMenu.map((sub, idx) => (
-                      <Typography
-                        key={idx}
-                        onClick={() => Router.push(sub.link)}
-                        sx={{ ':hover': { color: 'primary.main', cursor: 'pointer' } }}
-                      >
-                        {sub.title}
-                      </Typography>
-                    ))}
-                  </Box>
-                </AccordionDetails>
-              </Accordion>
-            ))}
-          </Navbar.Content>
+          {/* <Navbar.Content> */}
+          {menu.map((m, i) => (
+            <Accordion key={i}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls={`${i}-content`}
+                id={`${i}header`}
+              >
+                <Typography>{m.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Box display="flex" flexDirection="column" gap={1}>
+                  {m.subMenu.map((sub, idx) => (
+                    <Typography
+                      key={idx}
+                      onClick={() => Router.push(sub.link)}
+                      sx={{ ':hover': { color: 'primary.main', cursor: 'pointer' } }}
+                    >
+                      {sub.title}
+                    </Typography>
+                  ))}
+                </Box>
+              </AccordionDetails>
+            </Accordion>
+          ))}
+          {/* </Navbar.Content> */}
         </MobileNav>
       </Navbar.Wrapper>
       <Box component="main" marginTop={`${Navbar.height}px`} padding="80px 0">
