@@ -1,4 +1,4 @@
 import { Content } from './Content'
-import { Wrapper } from './Wrapper'
+import { navbarHeight, Wrapper } from './Wrapper'
 
-export const Navbar = { Wrapper, Content }
+export const Navbar = { Wrapper, Content, height: navbarHeight }

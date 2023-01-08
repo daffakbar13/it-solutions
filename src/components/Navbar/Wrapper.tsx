@@ -1,6 +1,5 @@
 import { Box, BoxProps, styled, SxProps } from '@mui/material'
 import { useScrollY } from 'src/hooks'
-import { Content } from './Content'
 import { ContentWrapper } from './ContentWrapper'
 
 const hiddenStyles: SxProps = {
@@ -9,14 +8,14 @@ const hiddenStyles: SxProps = {
   pointerEvents: 'none',
 }
 
-const navbarHeight = 89.55
+export const navbarHeight = 89.55
 
 export const Wrapper = styled((props: BoxProps) => {
   const { children } = props
   const { scroll, scrollDirection } = useScrollY()
   const hiddenRules = scroll > navbarHeight && scrollDirection === 'top'
   return (
-    <Box component="header" sx={{ ...(hiddenRules && hiddenStyles) }} {...props}>
+    <Box component="nav" sx={{ ...(hiddenRules && hiddenStyles) }} {...props}>
       <ContentWrapper>{children}</ContentWrapper>
     </Box>
   )
