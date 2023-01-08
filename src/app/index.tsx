@@ -1,5 +1,6 @@
 import { GlobalStyles } from '@mui/material'
 import type { AppProps } from 'next/app'
+import { HeaderContainer } from 'src/containers'
 import { ReduxProvider, ThemeProvider } from 'src/providers'
 import { globalStyles } from 'src/styles/globalStyles'
 
@@ -8,7 +9,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <ReduxProvider>
       <ThemeProvider>
         <GlobalStyles styles={globalStyles} />
-        <Component {...pageProps} />
+        <HeaderContainer>
+          <Component {...pageProps} />
+        </HeaderContainer>
       </ThemeProvider>
     </ReduxProvider>
   )
