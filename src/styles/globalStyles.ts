@@ -8,6 +8,7 @@ export const globalStyles: GlobalStylesProps['styles'] = {
   },
   '::-webkit-scrollbar': {
     width: 0,
+    height: 0,
     background: 'transparent',
   },
   fontFamily: 'Roboto',
