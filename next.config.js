@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  basePath: '/it-solutions',
+  basePath: process.env.NEXT_PUBLIC_BASE_URL,
 }
 
 module.exports = nextConfig
