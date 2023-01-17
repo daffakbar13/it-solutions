@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button } from '../Button'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { Box, Popover, SxProps, Typography } from '@mui/material'
 import { createMenu } from 'src/helpers'
 import Router from 'next/router'
+import Button from '../Button'
 
 const paperStyles: SxProps = {
   display: 'flex',
@@ -18,11 +18,11 @@ const paperStyles: SxProps = {
   },
 }
 
-interface MenuProps {
+interface Menu1Props {
   menu: ReturnType<typeof createMenu>
 }
 
-export function Menu(props: MenuProps) {
+export default function Menu1(props: Menu1Props) {
   const { menu } = props
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
 
@@ -42,7 +42,14 @@ export function Menu(props: MenuProps) {
       <Button
         aria-describedby={id}
         onClick={handleClick}
-        endIcon={<KeyboardArrowDownIcon />}
+        endIcon={
+          <KeyboardArrowDownIcon
+            sx={{
+              transition: 'all .3s',
+              ...(open && { transform: 'rotate(180deg)' }),
+            }}
+          />
+        }
         sx={{ color: open ? 'primary.main' : 'black', ':hover': { color: 'primary.main' } }}
       >
         <Typography variant="body1">{menu.title}</Typography>
@@ -63,8 +70,8 @@ export function Menu(props: MenuProps) {
         PaperProps={{ sx: paperStyles }}
       >
         {menu.subMenu.map((m, i) => (
-          <Typography key={i} variant="subtitle2" onClick={() => Router.push(m.link)}>
-            {m.title}
+          <Typography key={i} variant="subtitle2" onClick={() => Router.push(m.path)}>
+            {m.name}
           </Typography>
         ))}
       </Popover>
