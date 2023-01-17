@@ -1,6 +1,6 @@
 import { Grid, GridProps, styled } from '@mui/material'
 
-export const ContentWrapper = styled((props: GridProps) => (
+export const NavbarContainer = styled((props: GridProps) => (
   <Grid container columnSpacing={5} {...props} />
 ))(() => ({
   padding: '0 7%',
