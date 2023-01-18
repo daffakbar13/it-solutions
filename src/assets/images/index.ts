@@ -1,2 +1,8 @@
 export { default as ICLogo } from './ico/favicon.ico'
 export { default as ICNotFound } from './webp/404_not_found.webp'
+export { default as ICHeroImage1 } from './webp/IT-Solutions-Hero-Image-1.webp'
+export { default as ICHeroImage4 } from './webp/IT-Solutions-Hero-Image-4.webp'
+export { default as ICHeroElement1 } from './webp/IT-Solutions-Hero-Element-1.webp'
+export { default as ICHeroElement2 } from './webp/IT-Solutions-Hero-Element-2.webp'
+export { default as ICHeroElement3 } from './webp/IT-Solutions-Hero-Element-3.webp'
+export { default as ICHeroElement4 } from './webp/IT-Solutions-Hero-Element-4.webp'
