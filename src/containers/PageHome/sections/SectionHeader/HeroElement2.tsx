@@ -2,7 +2,7 @@ import { Avatar, styled } from '@mui/material'
 
 const HeroElement2 = styled(Avatar)(() => ({
   position: 'absolute',
-  bottom: '30.3%',
+  bottom: '29.3%',
   left: 'calc(50% - 14%)',
   width: '14%',
   height: 'auto',

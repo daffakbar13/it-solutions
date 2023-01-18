@@ -2,7 +2,7 @@ import { Avatar, styled } from '@mui/material'
 
 const HeroImage1 = styled(Avatar)(() => ({
   marginTop: '30px',
-  width: 'calc(100% - 40px)',
+  width: '90%',
   height: 'auto',
 }))
 
