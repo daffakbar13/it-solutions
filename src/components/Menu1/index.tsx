@@ -41,6 +41,7 @@ export default function Menu1(props: Menu1Props) {
     <Box>
       <Button
         aria-describedby={id}
+        variant="text"
         onClick={handleClick}
         endIcon={
           <KeyboardArrowDownIcon
@@ -50,7 +51,7 @@ export default function Menu1(props: Menu1Props) {
             }}
           />
         }
-        sx={{ color: open ? 'primary.main' : 'black', ':hover': { color: 'primary.main' } }}
+        sx={{ color: open ? 'primary.main' : 'black' }}
       >
         <Typography variant="body1">{menu.title}</Typography>
       </Button>
