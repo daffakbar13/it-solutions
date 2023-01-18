@@ -4,8 +4,8 @@ const HeroElement1 = styled(Avatar)(() => ({
   position: 'absolute',
   bottom: '27%',
   left: 10,
-  width: '35px',
-  height: '35px',
+  width: '13%',
+  height: 'auto',
 }))
 
 export default HeroElement1
