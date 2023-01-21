@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["airbnb-base", "next/core-web-vitals"],
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      }
+    }
+  ],
+  "rules": {
+    "semi": "off",
+    "import/extensions": "off",
+    "linebreak-style": "off"
+  }
 }
