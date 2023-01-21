@@ -1,13 +1,13 @@
 import { Box, BoxProps, IconButton, SxProps, useMediaQuery, useTheme } from '@mui/material'
 import { menu } from 'src/data'
 import { useScrollY } from 'src/hooks'
+import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
+import React from 'react'
 import Menu from '../Menu1'
 import { NavbarContainer } from './NavbarContainer'
 import { NavbarContent } from './NavbarContent'
-import MenuIcon from '@mui/icons-material/Menu'
-import CloseIcon from '@mui/icons-material/Close'
 import { MobileNav } from './MobileNav'
-import React from 'react'
 import { navbarHeight, NavbarWrapper } from './NavbarWrapper'
 
 const hiddenStyles: SxProps = {
