@@ -1,1 +1,1 @@
-export * from './useScrollY'
+export { default as useScrollY } from './useScrollY'

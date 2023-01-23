@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function useScrollY() {
+export default function useScrollY() {
   const [scroll, setScroll] = React.useState(0)
   const [scrollDirection, setScrollDirection] = React.useState<'top' | 'bottom'>()
 
