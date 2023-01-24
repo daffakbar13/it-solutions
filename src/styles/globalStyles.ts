@@ -1,16 +1,11 @@
 import { GlobalStylesProps } from '@mui/material'
 
 export const globalStyles: GlobalStylesProps['styles'] = {
-  body: {
-    height: '100vh',
-    width: '100vw',
-    overflow: 'scroll',
-  },
   '& html, body': {
+    minHeight: '100vh',
+    minWidth: '100vw',
     padding: 0,
     margin: 0,
-    height: '100vh',
-    width: '100vw',
     overflow: 'scroll',
     fontFamily: [
       '-apple-system',
