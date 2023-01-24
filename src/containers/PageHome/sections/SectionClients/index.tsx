@@ -35,17 +35,17 @@ export default function SectionClients() {
     const interval = setInterval(() => {
       setProjectCount((curr) => {
         if (hasBeenHittedContent && curr < 500) {
-          return curr + 1
+          return curr + 500 / 10
         }
         return curr
       })
       setClientCount((curr) => {
         if (hasBeenHittedContent && curr < 150) {
-          return curr + 1
+          return curr + 150 / 10
         }
         return curr
       })
-    }, 1)
+    }, 100)
     return () => clearInterval(interval)
   }, [hasBeenHittedContent])
 
