@@ -1,18 +1,41 @@
-import { Avatar, Grid, Typography } from '@mui/material'
+import { Avatar, Box, Grid, Typography } from '@mui/material'
 import Head from 'next/head'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import React from 'react'
 import { ICNotFound } from 'src/assets'
-import { Button, Section } from 'src/components'
+import { Button, Navbar, Section } from 'src/components'
 import { getPath } from 'src/helpers'
 
 export default function PageNotFound() {
+  const [showChild, setShowChild] = React.useState(false)
+  const [footerHeight, setFooterHeight] = React.useState(0)
+  const router = useRouter()
+
+  React.useEffect(() => {
+    const notFoundPath = getPath('notfound')
+    const isOnNotFoundPath = router.asPath === notFoundPath
+    if (!isOnNotFoundPath) {
+      router.replace(notFoundPath)
+    } else {
+      setShowChild(true)
+    }
+  }, [router])
+
+  React.useEffect(() => {
+    const footer = document.querySelector('footer')
+    setFooterHeight(footer?.clientHeight || 0)
+  }, [])
+
+  if (!showChild) {
+    return <Box sx={{ height: `calc(100vh - ${Navbar.height}px - ${footerHeight}px)` }} />
+  }
+
   return (
     <>
       <Head>
         <title>Page Not Found</title>
       </Head>
-      <Section>
+      <Section position="sticky" bottom={0}>
         <Grid container direction="column" spacing={2}>
           <Grid item xs>
             <center>
