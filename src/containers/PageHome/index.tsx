@@ -1,10 +1,11 @@
 import React from 'react'
-import { SectionHeader } from './sections'
+import { SectionClients, SectionHeader } from './sections'
 
 export default function PageHome() {
   return (
     <>
       <SectionHeader />
+      <SectionClients />
     </>
   )
 }
