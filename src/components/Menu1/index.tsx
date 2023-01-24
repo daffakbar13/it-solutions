@@ -11,6 +11,7 @@ const paperStyles: SxProps = {
   gap: 2,
   p: 3,
   backgroundColor: 'black',
+  cursor: 'default',
   '& h6': {
     color: 'white',
     fontWeight: '500',
@@ -75,7 +76,7 @@ export default function Menu1(props: Menu1Props) {
           <KeyboardArrowDownIcon
             sx={{
               transition: 'all .3s',
-              ...(open && { transform: 'rotate(180deg)' }),
+              ...(open && { transform: 'rotate(-180deg)' }),
             }}
           />
         }
@@ -95,6 +96,7 @@ export default function Menu1(props: Menu1Props) {
           vertical: 'top',
           horizontal: 'center',
         }}
+        sx={{ cursor: 'pointer' }}
         PaperProps={{ id, sx: paperStyles }}
       >
         {menu.subMenu.map((m, i) => (
