@@ -25,24 +25,52 @@ interface Menu1Props {
 export default function Menu1(props: Menu1Props) {
   const { menu } = props
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popover' : ''
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
   }
 
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
+  const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
+    const element = document.getElementById(id)
+    const { clientY, clientX } = e
 
-  const open = Boolean(anchorEl)
-  const id = open ? 'simple-popover' : undefined
+    if (element && anchorEl) {
+      const outsideButton = [
+        // Inside Button Left
+        clientX >= anchorEl.offsetLeft,
+        // Inside Button Right
+        clientX <= anchorEl.offsetLeft + anchorEl.offsetWidth,
+        // Inside Button Top
+        clientY >= anchorEl.offsetTop,
+        // Inside Button Bottom
+        clientY <= anchorEl.offsetTop + anchorEl.offsetHeight,
+      ].includes(false)
+
+      const outsideMenu = [
+        // Inside Menu Left
+        clientX >= element.offsetLeft,
+        // Inside Menu Right
+        clientX <= element.offsetLeft + element.offsetWidth,
+        // Inside Menu Top
+        clientY >= element.offsetTop,
+        // Inside Menu Bottom
+        clientY <= element.offsetTop + element.offsetHeight,
+      ].includes(false)
+
+      if (outsideButton && outsideMenu) {
+        setAnchorEl(null)
+      }
+    }
+  }
 
   return (
     <Box>
       <Button
         aria-describedby={id}
         variant="text"
-        onClick={handleClick}
+        onMouseEnter={handleClick}
         endIcon={
           <KeyboardArrowDownIcon
             sx={{
@@ -56,10 +84,9 @@ export default function Menu1(props: Menu1Props) {
         <Typography variant="body1">{menu.title}</Typography>
       </Button>
       <Popover
-        id={id}
         open={open}
         anchorEl={anchorEl}
-        onClose={handleClose}
+        onMouseMove={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center',
@@ -68,7 +95,7 @@ export default function Menu1(props: Menu1Props) {
           vertical: 'top',
           horizontal: 'center',
         }}
-        PaperProps={{ sx: paperStyles }}
+        PaperProps={{ id, sx: paperStyles }}
       >
         {menu.subMenu.map((m, i) => (
           <Typography key={i} variant="subtitle2" onClick={() => Router.push(m.path)}>
