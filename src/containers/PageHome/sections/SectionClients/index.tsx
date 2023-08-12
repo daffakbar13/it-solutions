@@ -1,4 +1,14 @@
-import { Avatar, Box, Grid, Theme, Typography, useMediaQuery } from '@mui/material'
+import {
+  Avatar,
+  Box,
+  Breakpoint,
+  Breakpoints,
+  Grid,
+  Theme,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
 import React from 'react'
 import {
   ICCompanies1,
@@ -16,7 +26,9 @@ export default function SectionClients() {
   const [hasBeenHittedContent, setHasBeenHittedContent] = React.useState(false)
   const [projectCount, setProjectCount] = React.useState(0)
   const [clientCount, setClientCount] = React.useState(0)
-  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'))
+  const media = useMediaQuery<Theme>
+  const downMd = media((t) => t.breakpoints.down('md'))
+  const downSm = media((t) => t.breakpoints.down('sm'))
 
   React.useEffect(() => {
     const content = document.getElementById('section-content')
@@ -50,34 +62,50 @@ export default function SectionClients() {
   }, [hasBeenHittedContent])
 
   return (
-    <Section id="section-clients" bgcolor={(theme) => theme.palette.grey[200]}>
+    <Section id="section-clients" bgcolor="grey.50">
       <div id="section-content"></div>
-      <Grid container columns={2}>
-        <Grid item xs={2} md={1}>
-          <Box
+      <Grid container columns={2} rowSpacing={2}>
+        <Grid item xs={2} sm={1}>
+          <Grid container columns={2}>
+            <Grid item xs={1} color="primary.main">
+              <Typography variant={downSm ? 'h3' : 'h2'}>{projectCount}+</Typography>
+              <Typography variant="h6">Projects</Typography>
+            </Grid>
+            <Grid item xs={1} color="secondary.main">
+              <Typography variant={downSm ? 'h3' : 'h2'}>{clientCount}+</Typography>
+              <Typography variant="h6">Clients</Typography>
+            </Grid>
+          </Grid>
+          {/* <Box
             display="flex"
-            gap={isMobile ? 10 : 0}
-            {...(!isMobile && { justifyContent: 'space-between' })}
+            gap={downMd ? 2 : 10}
+            {...(downSm && { justifyContent: 'space-between' })}
           >
             <Box color="primary.main">
-              <Typography variant="h2">{projectCount}+</Typography>
+              <Typography variant={downMd ? 'h4' : 'h2'}>{projectCount}+</Typography>
               <Typography variant="h6">Projects</Typography>
             </Box>
             <Box color="secondary.main">
-              <Typography variant="h2">{clientCount}+</Typography>
+              <Typography variant={downMd ? 'h4' : 'h2'}>{clientCount}+</Typography>
               <Typography variant="h6">Clients</Typography>
             </Box>
-          </Box>
+          </Box> */}
         </Grid>
-        <Grid item xs={2} md={1}>
+        <Grid item xs={2} sm={1}>
           <Grid
             container
-            columns={{ xs: 2, md: 3 }}
+            columns={3}
             rowSpacing={2}
-            sx={{ '& .MuiAvatar-root': { width: 'max-content', height: '25px' } }}
+            sx={{
+              '& .MuiAvatar-root': {
+                width: 'max-content',
+                height: downMd ? '18px' : '25px',
+                opacity: 0.5,
+              },
+            }}
           >
-            <Grid item xs={2} md={3}>
-              <Typography variant="h5">
+            <Grid item xs={3} md={3}>
+              <Typography variant="h5" {...(downSm && { variant: 'h6', align: 'center' })}>
                 As seen on over {clientCount}+ clients all over the world
               </Typography>
             </Grid>
